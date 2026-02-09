@@ -2,13 +2,21 @@
   "name": "orangehrm",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "report": "npx playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.58.0",
+    "@playwright/test": "^1.58.2",
     "@types/node": "^25.0.10"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "exceljs": "^4.4.0",
+    "winston": "^3.19.0"
   }
 }
