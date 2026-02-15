@@ -5,7 +5,6 @@
   "scripts": {
     "test": "npx playwright test",
     "test_headed": "npx playwright test --headed",
-    "test_headless": "npx playwright test --headless",
     "test_chromium": "npx playwright test --project=chromium",
     "test_firefox": "npx playwright test --project=firefox",
     "test_webkit": "npx playwright test --project=webkit",

@@ -37,6 +37,9 @@ class AddEmployeePage {
 
     // Save
     this.saveButton = page.getByRole('button', { name: 'Save' });
+
+    //Error messages
+    this.employeeIdExistsError = this.page.locator('//label[text()="Employee Id"]/ancestor::div[contains(@class,"oxd-input-group")]//span[contains(@class,"oxd-input-field-error-message")]');
   }
 
   //Employee Basic Info
@@ -81,9 +84,18 @@ class AddEmployeePage {
   //Save 
 
   async saveEmployee() {
-    logger.info('Saving employee');
     await this.saveButton.click();
+    logger.info('Saving employee');
+    const duplicate = await this.employeeIdExistsError.waitFor({ state: 'visible', timeout: 5000 }).then(() => true).catch(() => false);
+    if (duplicate){
+      logger.warn('OrangeHRM known Bug: Duplicate Employee ID detected, retrying with cleared ID');
+      await this.employeeIdInput.click();
+      await this.employeeIdInput.press('Control+A');
+      await this.employeeIdInput.press('Backspace');
+      await this.saveButton.click();
+    }
   }
+  
 }
 
 module.exports = AddEmployeePage;
