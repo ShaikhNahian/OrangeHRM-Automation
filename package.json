@@ -4,6 +4,14 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "test_headed": "npx playwright test --headed",
+    "test_headless": "npx playwright test --headless",
+    "test_chromium": "npx playwright test --project=chromium",
+    "test_firefox": "npx playwright test --project=firefox",
+    "test_webkit": "npx playwright test --project=webkit",
+    "test_chromium_headed": "npx playwright test --project=chromium --headed",
+    "test_firefox_headed": "npx playwright test --project=firefox --headed",
+    "test_webkit_headed": "npx playwright test --project=webkit --headed",
     "report": "npx playwright show-report"
   },
   "keywords": [],

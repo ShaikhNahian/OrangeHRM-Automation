@@ -26,50 +26,35 @@ export default defineConfig({
   reporter: [
     ['html', { outputFolder: 'reports/html-report', open: 'never' }]
   ],
+  timeout: 100 * 1000, 
+
+  expect: {
+    timeout: 30 * 1000
+  },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: 'https://opensource-demo.orangehrmlive.com',
     screenshot: 'only-on-failure',
+    actionTimeout: 30 * 1000,
+    navigationTimeout: 60 * 1000,
     trace: 'on-first-retry',
     headless: false
   },
 
   /* Configure projects for major browsers */
-  projects: [
+ projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { browserName: 'chromium' }
     },
-
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { browserName: 'firefox' }
     },
-
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+      use: { browserName: 'webkit' }
+    }
   ],
 
   /* Run your local dev server before starting the tests */
