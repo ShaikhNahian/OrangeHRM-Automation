@@ -1,4 +1,3 @@
-// pages/AddEmployeePage.js
 const logger = require('../utils/logger');
 
 class AddEmployeePage {
@@ -40,7 +39,7 @@ class AddEmployeePage {
     this.saveButton = page.getByRole('button', { name: 'Save' });
   }
 
-  /* ---------- Employee Basic Info ---------- */
+  //Employee Basic Info
 
   async enterEmployeeName(first, middle, last) {
     logger.info('Entering employee name');
@@ -60,7 +59,7 @@ class AddEmployeePage {
     await this.photoUploadInput.setInputFiles(imagePath);
   }
 
-  /* ---------- Login Details ---------- */
+  //Login Details
 
   async enableCreateLoginDetails() {
     logger.info('Enabling Create Login Details');
@@ -79,7 +78,7 @@ class AddEmployeePage {
     await this.statusRadio(status).check();
   }
 
-  /* ---------- Save ---------- */
+  //Save 
 
   async saveEmployee() {
     logger.info('Saving employee');

@@ -14,8 +14,10 @@ class PersonalDetailsPage {
 
     this.dobInput = page.locator('//label[text()="Date of Birth"]/../following-sibling::div//input');
 
-    // Dropdowns (dynamic / searchable)
+    // Dropdowns 
     this.nationalityDropdown = page.locator('//label[text()="Nationality"]/../following-sibling::div//div[contains(@class,"oxd-select-text-input")]');
+    this.maritalStatusDropdown = page.locator('//label[text()="Marital Status"]/../following-sibling::div//div[contains(@class,"oxd-select-text-input")]');
+    
 
     // Radio Buttons
     this.genderRadioByValue = (value) =>
@@ -23,8 +25,6 @@ class PersonalDetailsPage {
             `//div[contains(@class,"gender-grouped-field")]` +
             `//input[@type="radio" and @value="${value}"]/following-sibling::span`
         );
-
-    this.maritalStatusDropdown = page.locator('//label[text()="Marital Status"]/../following-sibling::div//div[contains(@class,"oxd-select-text-input")]');
     // Save Button
     this.saveButton = page.locator('.orangehrm-edit-employee-content form').first().getByRole('button', { name: 'Save' });
     this.successToast = page.locator('.oxd-toast.oxd-toast--success');
@@ -32,7 +32,7 @@ class PersonalDetailsPage {
 
   }
 
-  /* ---------- Actions ---------- */
+  //Actions 
 
   async verifyPersonalDetailsTabActive() {
     await this.personalDetailsTab.waitFor({ state: 'visible' });
@@ -103,7 +103,7 @@ class PersonalDetailsPage {
   async verifySaveSuccessToast() {
     logger.info('Verifying success toast');
 
-    // Toast appears fast but disappears fast → small timeout
+    // Toast popup
     await this.successToast.waitFor({ state: 'visible', timeout: 5000 });
 
     const message = (await this.successToastMessage.textContent()).trim();
@@ -115,7 +115,7 @@ class PersonalDetailsPage {
     logger.info(`ASSERTION PASSED: Success toast shown → "${message}"`);
   }
 
-  /* ---------- Composite Action ---------- */
+  //Fillup Personal Details
 
   async fillPersonalDetails(data) {
     await this.verifyPersonalDetailsTabActive();

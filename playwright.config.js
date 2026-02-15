@@ -1,4 +1,5 @@
 // @ts-check
+const isCI = !!process.env.CI;
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -35,10 +36,10 @@ export default defineConfig({
   use: {
     baseURL: 'https://opensource-demo.orangehrmlive.com',
     screenshot: 'only-on-failure',
+    headless: isCI,
     actionTimeout: 30 * 1000,
     navigationTimeout: 60 * 1000,
-    trace: 'on-first-retry',
-    headless: false
+    trace: 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
