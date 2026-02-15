@@ -1,6 +1,7 @@
 const { expect } = require('@playwright/test');
 const { loginTest } = require('../fixtures/loginFixture');
 const { excelRows } = require('../config/config');
+const DataGenerator = require('../utils/dataGenerator');
 
 const DashboardPage = require('../pages/DashboardPage');
 const AddEmployeePage = require('../pages/AddEmployeePage');
@@ -31,11 +32,11 @@ loginTest(
         personalDetailsRow
       );
 
-      const firstName = employeeData[1];
+      const firstName = DataGenerator.maybeMutate(employeeData[1], 'name');
       const middleName = employeeData[2];
-      const lastName = employeeData[3];
+      const lastName = DataGenerator.maybeMutate(employeeData[3], 'name');
 
-      const loginUsername = employeeLoginData[1];
+      const loginUsername = DataGenerator.maybeMutate(employeeLoginData[1], 'username');
       const loginPassword = employeeLoginData[2];
       const loginStatus = employeeLoginData[3];
 
