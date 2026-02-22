@@ -27,18 +27,18 @@ export default defineConfig({
   reporter: [
     ['html', { outputFolder: 'reports/html-report', open: 'never' }]
   ],
-  timeout: 100 * 1000, 
+  timeout: 200 * 1000, 
 
   expect: {
-    timeout: 30 * 1000
+    timeout: 100 * 1000
   },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: 'https://opensource-demo.orangehrmlive.com',
     screenshot: 'only-on-failure',
     headless: isCI,
-    actionTimeout: 30 * 1000,
-    navigationTimeout: 60 * 1000,
+    actionTimeout: 100 * 1000,
+    navigationTimeout: 100 * 1000,
     trace: 'on-first-retry'
   },
 

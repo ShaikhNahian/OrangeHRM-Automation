@@ -39,7 +39,9 @@ class AddEmployeePage {
     this.saveButton = page.getByRole('button', { name: 'Save' });
 
     //Error messages
-    this.employeeIdExistsError = this.page.locator('//label[text()="Employee Id"]/ancestor::div[contains(@class,"oxd-input-group")]//span[contains(@class,"oxd-input-field-error-message")]');
+    this.employeeIdExistsError = page.locator(
+      '//label[text()="Employee Id"]/ancestor::div[contains(@class,"oxd-input-group")]//span[contains(@class,"oxd-input-field-error-message")]'
+    );
   }
 
   //Employee Basic Info

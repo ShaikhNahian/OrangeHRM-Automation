@@ -10,7 +10,7 @@ class PersonalDetailsPage {
 
     // Inputs
     this.licenseNumberInput = page.locator('//label[text()="Driver\'s License Number"]/../following-sibling::div//input');
-    this.licenseExpiryInput = this.licenseExpiryInput = page.locator('//label[text()="License Expiry Date"]/../following-sibling::div//input');
+    this.licenseExpiryInput = page.locator('//label[text()="License Expiry Date"]/../following-sibling::div//input');
 
     this.dobInput = page.locator('//label[text()="Date of Birth"]/../following-sibling::div//input');
 

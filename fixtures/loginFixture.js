@@ -7,9 +7,13 @@ exports.loginTest = test.extend({
   page: async ({ page }, use) => {
     logger.info('Logging into application');
     const loginData = await excel.getRowData('LoginData', 2);
+    const loginCredentials = {
+      username : loginData[1],
+      password : loginData[2]
+    };
 
     const loginPage = new LoginPage(page);
-    await loginPage.login(loginData[1], loginData[2]);
+    await loginPage.login(loginCredentials.username, loginCredentials.password);
 
     await use(page);
   }
